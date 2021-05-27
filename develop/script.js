@@ -1,20 +1,44 @@
-var answerField = document.querySelector("answers");
+var answers = document.getElementById('answers');
 
-var questions = document.querySelector("questions");
+var questions = document.getElementById('questions');
 
 var timer = document.getElementById('timer');
 
 var startButton = document.getElementById('start');
 
-var secondsLeft = 75;
+var welcome = document.getElementById('welcome');
 
-//Change Text Content on loop for questions?
+var secondsLeft = 75;
+ 
+//calculate score with local storage variable, counter example
+
+//Array for answers(one for wrong, one for right?) and questions with matching idexes? But then how match answers to letter?
+
+//Answers each have own button, likely use class to trigger function from any of them
+
+//Change Text Content on button push for questions, 1,2,3,4 + "array item"
+
 //"answer" class/id for answer buttons, group into variable, add click event
+
 //Timer for quiz
-//add start button
+
+//timer subtracts on wrong answers
+
+//add functionality to button to calculate score, store in variable/local storage, retrieve/display on highscores page
+
+console.log(answers);
+
+answers.style.display = "none";
+
 function setTimer() {
-//window.location = "highscores.html" at end of interval(Timer that subtracts on wrong answers)
+
 var quizTimer = setInterval(function() {
+
+welcome.textContent = "";    
+
+startButton.remove();    
+
+answers.style.display = "block";
 
 secondsLeft--;
 
@@ -28,4 +52,6 @@ if(secondsLeft === 0){
 //End of set Timer
 
 startButton.addEventListener("click", setTimer);
-//for loop to calculate score, store in variable/local storage, retrieve/display on highscores page
+
+
+//append highscore name, render todos hint
