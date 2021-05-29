@@ -1,4 +1,9 @@
 var answers = document.getElementById('answers');
+//hides answer list, placed at top to reduce load time
+answers.style.display = "none";
+
+var answerButtons = document.getElementsByName("button");
+console.log(answerButtons);
 
 var questions = document.getElementById('questions');
 
@@ -9,41 +14,70 @@ var startButton = document.getElementById('start');
 var welcome = document.getElementById('welcome');
 
 var secondsLeft = 75;
- 
-//calculate score with local storage variable, counter example
 
-//Array for answers(one for wrong, one for right?) and questions with matching idexes? But then how match answers to letter?
+var questionAnswers = [
+    //first question/answer object
+{question:"What values can a boolean have?",
+answer:[
+    //list of text/correct for answer object
+    {text: "True or False", correct: true},
+    {text: "Definitely, Maybe", correct: false},
+    {text: "True, False, or Sometimes Both", correct: false},
+    {text: "True, Flase, Number, or String", correct: false}
+]},
+//second question/answer object
+{question:"Which of these are numbers?",
+//second answer object
+answer:[
+{text: 4, correct: true},
+{text: "four", correct: false},
+{text: "'4'", correct: false},
+{text: "for", correct: false}
+]},
+//third question answer object
+{question: "What is the difference between a function and a method?",
+//third answer object
+answer:[
+    {text: "A method is only ever within an object.", correct: true},
+    {text: "There is no difference.", correct: false},
+    {text: "A function is only ever within an object.", correct: false},
+    {text: "A method is only ever outside an object.", correct: false}
+]},
+//fourth question answer object
+{question: "Which line of code adds functionality when a variable called 'button' is clicked?",
+//fourth answer object
+answer:[
+    {text: "button.addEventListener('click', alert('Don't just push random buttons!'))", correct: true},
+    {text: "button.alert('Don't just click random buttons!')", correct: false},
+    {text: "button.addEventListener('click')", correct: false},
+    {text: "buttons.addEventListener('click', alert('Don't just push random buttons!'))", correct: false}
+]},
+//fifth question answer object
+{question: "Select the answer that describes what this code will do: document.getElementById('text').innerHTML = 'New Text!'",
+//fifth answer object
+    answer:[
+        {text: "Sets the HTML content of the element with the id of 'text' within the document loading the script to equal 'New Text!'", correct: true},
+        {text: "Nothing", correct: false},
+        {text: "I don't know", correct: false},
+        {text: "Sets the HTML content of the element with the class of 'text' within the document loading the script to equal 'New Text!'", correct: false}]
+}];
+//End of Question and Answer Object
 
-//Answers each have own button, likely use class to trigger function from any of them
-
-//Change Text Content on button push for questions, 1,2,3,4 + "array item"
-
-//"answer" class/id for answer buttons, group into variable, add click event
+var score = 0;
 
 //Timer for quiz
-
-//timer subtracts on wrong answers
-
-//add functionality to button to calculate score, store in variable/local storage, retrieve/display on highscores page
-
-console.log(answers);
-
-answers.style.display = "none";
-
 function setTimer() {
 
 var quizTimer = setInterval(function() {
-
+    //code to hide startnig content
 welcome.textContent = "";    
-
-startButton.remove();    
-
+startButton.remove();
+    //code to show questions and answers    
 answers.style.display = "block";
-
+    //code to set timer
 secondsLeft--;
-
 timer.textContent = secondsLeft;
-
+    //code to go to highscores at end of time
 if(secondsLeft === 0){
     clearInterval(quizTimer);
     window.location.assign("highscores.html");
@@ -51,7 +85,20 @@ if(secondsLeft === 0){
 }, 750)};
 //End of set Timer
 
+//add Timer function to start button
 startButton.addEventListener("click", setTimer);
 
+//!!!!!!!!!!!!!!!!!!
+//Check Class Vid About DOM Nodes
+//Array for questions with matching indexes? But then how match answers to 1-4?
+//Answers each have own button, likely use class to trigger function from any of them
+//Change Text Content on button push for questions, 1,2,3,4 + "array item"
+//"answer" class/id for answer buttons, group into variable, add click event that uses if/else (if from "correct" array, trigger function to add points to score, else subtract time),
+//change button.textcontent to equal answer in question object, add iterator to button, ++ on click, add to score if answer is part of array, multiple button ids?, else  -- to secondsleft
+//!!!!!!!!!!!!!!!!!!!
+
+//add functionality to button to calculate score, store in variable/local storage, retrieve/display on highscores page
+
+//calculate score with local storage variable, counter example
 
 //append highscore name, render todos hint
