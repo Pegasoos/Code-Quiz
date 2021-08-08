@@ -1,10 +1,9 @@
-var answers = document.getElementById('answers');
-//hides answer list, placed at top to reduce load time
-answers.style.display = "none";
+var questionStage = document.getElementById('stage');
+
+var answers = document.getElementById('answers')
 
 var answerButtons = document.getElementsByName("button");
-console.log(answerButtons);
-
+console.log(answerButtons)
 var questions = document.getElementById('questions');
 
 var timer = document.getElementById('timer');
@@ -14,6 +13,8 @@ var startButton = document.getElementById('start');
 var welcome = document.getElementById('welcome');
 
 var secondsLeft = 75;
+
+var shuffledQuestions, currentQuestionIndex;
 
 var questionAnswers = [
     //first question/answer object
@@ -65,19 +66,49 @@ answer:[
 
 var score = 0;
 
+function showQuestion(){
+    stage.innerText = shuffledQuestions[currentQuestionIndex].question
+    shuffledQuestions[currentQuestionIndex].answer.forEach(answer => {
+        const button = document.createElement('button')
+        button.innerText = answer.text
+        // class for styling later
+        button.classList.add('btn')
+        if(answer.correct){
+            button.dataset.correct
+        }
+        button.addEventListener("click", selectAnswer())
+        answers.appendChild(button)
+    })
+    };
+
+function selectAnswer(){
+
+};
+
+function setNextQuestion(){
+    showQuestion(shuffledQuestions[currentQuestionIndex]);
+    resetState();
+};
+
+
+function startQuiz(){
+    //code to hide starting content
+    welcome.classList.add('poof');  
+    startButton.classList.add('poof');
+        //code to show questions and answers  
+    answers.classList.remove('poof');
+    shuffledQuestions = questionAnswers.sort(()=>Math.random()-.5);
+    currentQuestionIndex = 0
+    setNextQuestion();
+}
 //Timer for quiz
 function setTimer() {
-
 var quizTimer = setInterval(function() {
-    //code to hide startnig content
-welcome.textContent = "";    
-startButton.remove();
-    //code to show questions and answers    
-answers.style.display = "block";
     //code to set timer
 secondsLeft--;
 timer.textContent = secondsLeft;
-    //code to go to highscores at end of time
+
+//code to go to highscores at end of time
 if(secondsLeft === 0){
     clearInterval(quizTimer);
     window.location.assign("highscores.html");
@@ -85,12 +116,16 @@ if(secondsLeft === 0){
 }, 750)};
 //End of set Timer
 
-//add Timer function to start button
+//adds Timer function to start button
 startButton.addEventListener("click", setTimer);
+startButton.addEventListener("click", startQuiz);
+//answer button functionality to change question and answer displays
+
+
+//end of answer button functionality
 
 //!!!!!!!!!!!!!!!!!!
 //Check Class Vid About DOM Nodes
-//Array for questions with matching indexes? But then how match answers to 1-4?
 //Answers each have own button, likely use class to trigger function from any of them
 //Change Text Content on button push for questions, 1,2,3,4 + "array item"
 //"answer" class/id for answer buttons, group into variable, add click event that uses if/else (if from "correct" array, trigger function to add points to score, else subtract time),
