@@ -10,3 +10,9 @@
     border-width: 0.1em;
     border-style: solid;
 }
+.correct{
+    background-color: green;
+}
+.wrong{
+    background-color: red;
+}

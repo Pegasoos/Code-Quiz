@@ -6,7 +6,7 @@ var answerButtons = document.getElementsByName("button");
 console.log(answerButtons)
 var questions = document.getElementById('questions');
 
-var timer = document.getElementById('timer');
+let timer = document.getElementById('timer');
 
 var startButton = document.getElementById('start');
 
@@ -64,25 +64,32 @@ answer:[
 }];
 //End of Question and Answer Object
 
-var score = 0;
+let score = 0;
 
+
+//trying to get timer and score to adjust with answer correctness
 function selectAnswer(e){
     const selectedButton = e.target
     const correct = selectedButton.dataset.correct
     setStatusClass(document.body, correct)
     Array.from(answers.children).forEach(button => {
-        setStatusClass(button, button.dataset.correct)
+        setStatusClass(button.dataset.correct)
     })
     };
-    
 
 function setStatusClass(element, correct){
     clearStatusClass(element)
     if(correct){
         element.classList.add('correct')
+
+        score = score + 10
+
+        console.log(score)
     }
     else{
         element.classList.add('wrong')
+        
+        secondsLeft = secondsLeft-5 
     }
 }
 
@@ -90,6 +97,7 @@ function clearStatusClass(element){
     element.classList.remove('correct')
     element.classList.remove('wrong')
 }
+
 
 function setNextQuestion(){
     resetState();
