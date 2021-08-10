@@ -5,3 +5,8 @@
 #stage{
     font-family: Roboto;
 }
+.btn{
+    border-color: black;
+    border-width: 0.1em;
+    border-style: solid;
+}

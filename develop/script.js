@@ -1,7 +1,7 @@
 var questionStage = document.getElementById('stage');
 
 var answers = document.getElementById('answers')
-
+console.log(answers)
 var answerButtons = document.getElementsByName("button");
 console.log(answerButtons)
 var questions = document.getElementById('questions');
@@ -16,9 +16,9 @@ var secondsLeft = 75;
 
 var shuffledQuestions, currentQuestionIndex;
 
-var questionAnswers = [
+const questionAnswers = [
     //first question/answer object
-{question:"What values can a boolean have?",
+    {question:"What values can a boolean have?",
 answer:[
     //list of text/correct for answer object
     {text: "True or False", correct: true},
@@ -66,30 +66,57 @@ answer:[
 
 var score = 0;
 
+function selectAnswer(e){
+    const selectedButton = e.target
+    const correct = selectedButton.dataset.correct
+    setStatusClass(document.body, correct)
+    Array.from(answers.children).forEach(button => {
+        setStatusClass(button, button.dataset.correct)
+    })
+    };
+    
+
+function setStatusClass(element, correct){
+    clearStatusClass(element)
+    if(correct){
+        element.classList.add('correct')
+    }
+    else{
+        element.classList.add('wrong')
+    }
+}
+
+function clearStatusClass(element){
+    element.classList.remove('correct')
+    element.classList.remove('wrong')
+}
+
+function setNextQuestion(){
+    resetState();
+    showQuestion(shuffledQuestions[currentQuestionIndex]);
+};
+
 function showQuestion(){
     stage.innerText = shuffledQuestions[currentQuestionIndex].question
     shuffledQuestions[currentQuestionIndex].answer.forEach(answer => {
-        const button = document.createElement('button')
+        const button = document.createElement("button")
         button.innerText = answer.text
-        // class for styling later
+        // add btn class for styling later
         button.classList.add('btn')
         if(answer.correct){
-            button.dataset.correct
+            button.dataset.correct = answer.correct
         }
-        button.addEventListener("click", selectAnswer())
+        button.addEventListener("click", selectAnswer)
         answers.appendChild(button)
     })
     };
 
-function selectAnswer(){
-
-};
-
-function setNextQuestion(){
-    showQuestion(shuffledQuestions[currentQuestionIndex]);
-    resetState();
-};
-
+function resetState(){
+    clearStatusClass(document.body)
+    while(answers.firstChild){
+        answers.removeChild(answers.firstChild)
+    }
+}
 
 function startQuiz(){
     //code to hide starting content
