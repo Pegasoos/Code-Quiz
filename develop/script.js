@@ -78,7 +78,7 @@ function selectAnswer(e){
     };
 
 function setStatusClass(element, correct){
-    clearStatusClass(element)
+    //clearStatusClass(element)
     if(correct){
         element.classList.add('correct')
 
@@ -91,17 +91,25 @@ function setStatusClass(element, correct){
         
         secondsLeft = secondsLeft-5 
     }
+    currentQuestionIndex++
+    setNextQuestion();
 }
 
-function clearStatusClass(element){
-    element.classList.remove('correct')
-    element.classList.remove('wrong')
-}
+    //function clearStatusClass(element){
+    //element.classList.remove('correct')
+    //element.classList.remove('wrong')
+    //}
 
 
 function setNextQuestion(){
     resetState();
-    showQuestion(shuffledQuestions[currentQuestionIndex]);
+    //go to highscore if out of questions
+    if(currentQuestionIndex === shuffledQuestions.length){
+        window.location.assign("highscores.html")
+    }
+    else{
+    showQuestion(shuffledQuestions[currentQuestionIndex])
+    };
 };
 
 function showQuestion(){
@@ -120,7 +128,7 @@ function showQuestion(){
     };
 
 function resetState(){
-    clearStatusClass(document.body)
+    //clearStatusClass(document.body)
     while(answers.firstChild){
         answers.removeChild(answers.firstChild)
     }
