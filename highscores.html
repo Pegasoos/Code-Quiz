@@ -3,20 +3,20 @@
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.1/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-+0n0xVW2eSR5OomGNYDnhzAbDsOXxcvSN1TPprVMTNDbiYZCxYbOOl7+AMvyTG2x" crossorigin="anonymous">
     <link rel = "stylesheet" href = "develop/style.css">
 </head>
-<h1 class = "poof">Highscores</h1>
+<h1 id ="hiddenHeading" class = "poof">Highscores</h1>
 <h1 id = "heading">Pencils Down!</h1>
 <div id = "final"></div>
-<form>
+<div id = "scoreList"></div>
+<form id = "formList">
     <!--After Submit, Clear All Except Go Back(Hide until initials submitted) and Clear Buttons-->
     <label for = "initials">Enter Your Initials!</label>
     <input type = "text" id="initials">
     <button id = "submit">Submit</button>
 </form>
-<div class = "poof">
+<div id ="clearGoButtons" class = "poof">
     <button id = "clear">Clear Highscores</button>
     <a href = "index.html"><button>Go Back</button></a>
 </div>
-<div id = "scoreList"></div>
 <body>
 
 <script src="./develop/highscore.js"></script>
