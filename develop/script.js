@@ -105,6 +105,7 @@ function setNextQuestion(){
     resetState();
     //go to highscore if out of questions
     if(currentQuestionIndex === shuffledQuestions.length){
+        localStorage.setItem("score", score)
         window.location.assign("highscores.html")
     }
     else{
@@ -154,6 +155,7 @@ timer.textContent = secondsLeft;
 //code to go to highscores at end of time
 if(secondsLeft === 0){
     clearInterval(quizTimer);
+    localStorage.setItem("score", score)
     window.location.assign("highscores.html");
 }
 }, 750)};
@@ -162,21 +164,7 @@ if(secondsLeft === 0){
 //adds Timer function to start button
 startButton.addEventListener("click", setTimer);
 startButton.addEventListener("click", startQuiz);
-//answer button functionality to change question and answer displays
-
-
-//end of answer button functionality
-
-//!!!!!!!!!!!!!!!!!!
-//Check Class Vid About DOM Nodes
-//Answers each have own button, likely use class to trigger function from any of them
-//Change Text Content on button push for questions, 1,2,3,4 + "array item"
-//"answer" class/id for answer buttons, group into variable, add click event that uses if/else (if from "correct" array, trigger function to add points to score, else subtract time),
-//change button.textcontent to equal answer in question object, add iterator to button, ++ on click, add to score if answer is part of array, multiple button ids?, else  -- to secondsleft
-//!!!!!!!!!!!!!!!!!!!
-
-//add functionality to button to calculate score, store in variable/local storage, retrieve/display on highscores page
-
-//calculate score with local storage variable, counter example
 
 //append highscore name, render todos hint
+//clear highscores
+//hide buttons based on click
