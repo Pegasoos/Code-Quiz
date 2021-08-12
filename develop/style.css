@@ -1,18 +1,36 @@
-/*Question Text Style*/
+/*Extra Bold for top score, style first child*/
+/*Three color column structure, main color for quiz and answer box, color for blank space on sides*/
+
+body{
+    font-family: Hind;
+    font-weight:500;
+}
 .poof{
     display: none;
 }
+
+.heading{
+    padding-bottom: 1.5em;
+    padding-top: 1.5em;
+}
+
+.quiz{
+    text-align: center;
+}
+
+#timer{
+    text-align: right;
+}
+
 #stage{
-    font-family: Roboto;
+    font-family: Teko;
 }
 .btn{
+    width:2.5in;
+    height:2in;
     border-color: black;
     border-width: 0.1em;
     border-style: solid;
-}
-.correct{
-    background-color: green;
-}
-.wrong{
-    background-color: red;
+    margin-left: 0.5em;
+    margin-right: 0.5em;
 }

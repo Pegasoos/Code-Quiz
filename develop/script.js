@@ -1,20 +1,22 @@
-var questionStage = document.getElementById('stage');
+let questionStage = document.getElementById('stage');
 
-var answers = document.getElementById('answers')
-console.log(answers)
-var answerButtons = document.getElementsByName("button");
-console.log(answerButtons)
-var questions = document.getElementById('questions');
+let answers = document.getElementById('answers')
+
+let answerButtons = document.getElementsByName("button");
+
+let questions = document.getElementById('questions');
 
 let timer = document.getElementById('timer');
 
-var startButton = document.getElementById('start');
+let startButton = document.getElementById('start');
 
-var welcome = document.getElementById('welcome');
+let welcome = document.getElementById('welcome');
 
-var secondsLeft = 75;
+let secondsLeft = 75;
 
-var shuffledQuestions, currentQuestionIndex;
+let score = 0;
+
+let shuffledQuestions, currentQuestionIndex;
 
 const questionAnswers = [
     //first question/answer object
@@ -63,8 +65,6 @@ answer:[
         {text: "Sets the HTML content of the element with the class of 'text' within the document loading the script to equal 'New Text!'", correct: false}]
 }];
 //End of Question and Answer Object
-
-let score = 0;
 
 
 //trying to get timer and score to adjust with answer correctness
@@ -118,7 +118,6 @@ function showQuestion(){
     shuffledQuestions[currentQuestionIndex].answer.forEach(answer => {
         const button = document.createElement("button")
         button.innerText = answer.text
-        // add btn class for styling later
         button.classList.add('btn')
         if(answer.correct){
             button.dataset.correct = answer.correct
