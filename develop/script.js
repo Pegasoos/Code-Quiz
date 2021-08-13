@@ -66,8 +66,6 @@ answer:[
 }];
 //End of Question and Answer Object
 
-
-//trying to get timer and score to adjust with answer correctness
 function selectAnswer(e){
     const selectedButton = e.target
     const correct = selectedButton.dataset.correct
@@ -78,28 +76,18 @@ function selectAnswer(e){
     };
 
 function setStatusClass(element, correct){
-    //clearStatusClass(element)
     if(correct){
         element.classList.add('correct')
-
         score = score + 10
-
         console.log(score)
     }
     else{
         element.classList.add('wrong')
-        
         secondsLeft = secondsLeft-5 
     }
     currentQuestionIndex++
     setNextQuestion();
 }
-
-    //function clearStatusClass(element){
-    //element.classList.remove('correct')
-    //element.classList.remove('wrong')
-    //}
-
 
 function setNextQuestion(){
     resetState();
@@ -128,7 +116,6 @@ function showQuestion(){
     };
 
 function resetState(){
-    //clearStatusClass(document.body)
     while(answers.firstChild){
         answers.removeChild(answers.firstChild)
     }
@@ -163,7 +150,3 @@ if(secondsLeft === 0){
 //adds Timer function to start button
 startButton.addEventListener("click", setTimer);
 startButton.addEventListener("click", startQuiz);
-
-//append highscore name, render todos hint
-//clear highscores
-//hide buttons based on click

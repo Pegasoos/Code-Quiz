@@ -1,3 +1,4 @@
+<html>
 <!DOCTYPE html>
 <head>
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.1/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-+0n0xVW2eSR5OomGNYDnhzAbDsOXxcvSN1TPprVMTNDbiYZCxYbOOl7+AMvyTG2x" crossorigin="anonymous">
@@ -5,20 +6,24 @@
 </head>
 <body>
     <div class = "highCenter">
-<h1 id ="hiddenHeading" class = "poof">Highscores</h1>
-<h1 id = "heading">Pencils Down!</h1>
-<div id = "final"></div>
-<div id = "scoreList"></div>
-<form id = "formList">
-    <!--After Submit, Clear All Except Go Back(Hide until initials submitted) and Clear Buttons-->
-    <label for = "initials">Enter Your Initials!</label>
-    <input type = "text" id="initials">
-    <button id = "submit">Submit</button>
-</form>
-<div id ="clearGoButtons" class = "poof">
-    <button id = "clear">Clear Highscores</button>
-    <a href = "index.html"><button>Go Back</button></a>
-</div>
-</div>
+        <h1 id ="hiddenHeading" class = "poof">Highscores</h1>
+        <h1 id = "heading">Pencils Down!</h1>
+        <h2 id = "final"></h2>
+        <ol id = "scoreList"></ol>
+        <form id = "formList">
+            <label for = "initials">Enter Your Initials!</label>
+            <input type = "text" id="initials">
+            <button id = "submit" class="btn-success">Submit</button>
+        </form>
+        <div id ="clearGoButtons" class = "poof">
+            <div class="row">
+                    <div>
+                    <button id = "clear">Clear Highscores</button>
+                    <a href = "index.html"><button id = "back">Go Back</button></a>
+                    </div>    
+            </div>
+        </div>        
+    </div>
 <script src="./develop/highscore.js"></script>
 </body>
+</html>

@@ -30,6 +30,7 @@ let submitScore = function(e){
     pencilHeading.classList.add("poof")
     finalScore.classList.add("poof")
     formElement.classList.add("poof")
+    scoreList.classList.add("scoreList")
     score = 0
 }
 

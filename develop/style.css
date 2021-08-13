@@ -1,10 +1,25 @@
 /*Extra Bold for top score, style first child*/
-/*Three color column structure, main color for quiz and answer box, color for blank space on sides*/
 
 body{
     font-family: Hind;
     font-weight:500;
 }
+a{
+    color:black
+}
+a:visited{
+    color:gray
+}
+a:hover{
+    color: gray;
+}
+
+li{
+    font-size:x-large;
+    margin-bottom: 1em;
+    list-style-position: inside;
+}
+/*poof class to hide/reveal various elements*/
 .poof{
     display: none;
 }
@@ -21,14 +36,6 @@ body{
 .highCenter{
     text-align: center;
 }
-
-#timer{
-    text-align: right;
-}
-
-#stage{
-    font-family: Teko;
-}
 .btn{
     width:2.5in;
     height:2in;
@@ -39,6 +46,34 @@ body{
     margin-right: 0.5em;
 }
 
+button{
+    width:1in;
+    height:.5in;
+    border-color: black;
+    border-width: 0.1em;
+    border-style: solid;
+    margin-left: 0.5em;
+    margin-right: 0.5em;
+}
+
+#timer{
+    text-align: right;
+}
+
+#stage{
+    font-family: Teko;
+}
+
+#final{
+    font-family: Teko;
+    font-weight: 700;
+    margin-top: 0.8em;
+    margin-bottom: 0.8em;
+}
+
+#back{
+    display:inline-flex;
+}
 /* Background data (Original source: https://subtlepatterns.com/grid-me/) */
 /* Animations */
 @-webkit-keyframes bg-scrolling-reverse {
